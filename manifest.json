@@ -1,0 +1,8 @@
+{
+  "id": "nyaa",
+  "name": "Nyaa.si",
+  "version": "1.0.0",
+  "description": "Stream anime from Nyaa.si in Hayase",
+  "types": ["anime"],
+  "entry": "./src/index.ts"
+}
