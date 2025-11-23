@@ -8,7 +8,7 @@ function extractEpisode(title) {
     /S\d{1,2}E(\d{1,4})/i,
     /-\s*(\d{1,4})\s*[\[(]/,
     /episode\s*(\d{1,4})/i,
-    /(\d{1,4})\s*$/i
+    /(\d{1,4})\s+$/i
   ];
   for (const regex of patterns) {
     const match = title.match(regex);
@@ -49,7 +49,10 @@ export async function search(query, filters = {}) {
     for (const row of rows) {
       if (!isEnglishAnime(row)) continue;
 
-      const titleEl = row.querySelector('td[colspan="2"] a:not([class])');
+      // 🔥 FIX: Nyaa no longer uses colspan="2"
+      // Title is in the second <td>
+      const titleCell = row.querySelectorAll('td')[1];
+      const titleEl = titleCell?.querySelector('a:not([class])');
       const title = titleEl?.textContent?.trim();
       if (!title) continue;
 
@@ -93,7 +96,7 @@ export async function search(query, filters = {}) {
     return (resPriority[b.resolution] || 0) - (resPriority[a.resolution] || 0);
   });
 
-  return results;
+  return results; // Always an array!
 }
 
 export async function stream(id) {
