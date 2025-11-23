@@ -2,7 +2,7 @@
   "id": "nyaa",
   "name": "Nyaa.si",
   "version": "1.0.0",
-  "description": "Stream anime from Nyaa.si in Hayase",
+  "description": "Stream anime from Nyaa.si in Hayase — with episode parsing, resolution filtering, and English-translated content only.",
   "types": ["anime"],
-  "entry": "./src/index.ts"
+  "entry": "./src/index.js"
 }
